@@ -105,18 +105,7 @@ public class Transaction {
         this.amount = amountToUseInTransaction;
     }
 
-    public void transact(Account accountFrom, Account accountTo) {
-        System.out.println("Transaction from " + from + " to " + to + " with amount " + amount + " and type " + type);
-        accountFrom.withdraw(amount);
-        accountTo.deposit(amount);
-        String msg = String.format(
-                "Transaction [type : %s] from account : %d to account : %d -> \n { Account %d has a balance of :%.2f \n Account %d has a balance of :%.2f \n  Date: %s}",
-                getType(), from, to, accountFrom.getId(), accountFrom.getBalance(), accountTo.getId(),
-                accountTo.getBalance(), date);
-        setNarration(msg);
-        System.out.println("**********************************************");
-        System.out.println("Transaction from " + from + " to " + to + " with amount " + amount + " and type " + type);
-        System.out.println("**********************************************");
+    public String getDate() {
+        return date;
     }
-
 }
