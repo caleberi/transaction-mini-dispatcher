@@ -1,3 +1,4 @@
+import java.util.Date;
 
 public class Transaction {
     private int from;
@@ -5,6 +6,7 @@ public class Transaction {
     private String narration;
     private double amount;
     private String type;
+    private String date;
 
     /**
      * Generates a narrative description of account performing transaction which are
@@ -17,6 +19,7 @@ public class Transaction {
         setAccountFrom(from);
         setAccountTo(to);
         setType(type);
+        this.date = new Date().toString();
     }
 
     private void setType(String type) {
@@ -102,17 +105,7 @@ public class Transaction {
         this.amount = amountToUseInTransaction;
     }
 
-    public void transact(Account accountFrom, Account accountTo) {
-        System.out.println("Transaction from " + from + " to " + to + " with amount " + amount + " and type " + type);
-        accountFrom.withdraw(amount);
-        accountTo.deposit(amount);
-        String msg = String.format(
-                "Transaction from account : %d to account : %d -> \n { Account %d has a balance of :%.2f \n Account %d has a balance of :%.2f \n}",
-                from, to, accountFrom.getId(), accountFrom.getBalance(), accountTo.getId(), accountTo.getBalance());
-        setNarration(msg);
-        System.out.println("**********************************************");
-        System.out.println("Transaction from " + from + " to " + to + " with amount " + amount + " and type " + type);
-        System.out.println("**********************************************");
+    public String getDate() {
+        return date;
     }
-
 }
