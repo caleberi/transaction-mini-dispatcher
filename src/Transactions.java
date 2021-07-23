@@ -43,8 +43,8 @@ public class Transactions {
     }
 
     public Transaction transact(Transaction transaction) {
-        Account accountTo = table.get(transaction.getTo());
-        Account accountFrom = table.get(transaction.getFrom());
+        Account accountTo = getTable().get(transaction.getTo());
+        Account accountFrom = getTable().get(transaction.getFrom());
 
         System.out.println("Transaction from " + transaction.getFrom() + " to " + transaction.getTo() + " with amount "
                 + transaction.getAmount() + " and type " + transaction.getType());

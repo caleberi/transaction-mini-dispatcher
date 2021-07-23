@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 public class Main {
@@ -14,7 +13,7 @@ public class Main {
             // Store your accounts i hashmap for easier lookup using account number as key
             // Yes. Each account should also have random number as balance;
             Account nAccount = new Account(new Random().nextInt(100), new Random().nextDouble() * 100000);
-            int nos = nAccount.getAccountNumber();
+            int nos = nAccount.getId();
             accs.add(nos);
             t.getTable().put(nos, nAccount);
         }
@@ -29,6 +28,7 @@ public class Main {
             if (randOne != randTwo) {
                 Account from = t.getTable().get(accs.get(randTwo));
                 Account to = t.getTable().get(accs.get(randOne));
+                System.out.println("From: " + from + " To: " + to);
                 String selectedTransaction = transType[new Random().nextInt(2)];
                 Transaction transaction = new Transaction(from.getId(), to.getId(), selectedTransaction);
                 double amountToUseInTransaction = new Random().nextDouble() * 10_000;
